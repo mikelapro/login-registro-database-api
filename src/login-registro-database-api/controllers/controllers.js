@@ -20,7 +20,7 @@ const getApiInfo = asyncHandler( async ( req, res ) => {
  * Registra el usuario especificado como nuevo usuario.
  */
 const registrarUsuario = asyncHandler( async ( req, res ) => {
-    usecases.checkApiKey( req.query.apiKey );
+    // usecases.checkApiKey( req.query.apiKey );
     res.status( 200 ).json( usecases.registrarUsuario( req.body ) );
 } );
 

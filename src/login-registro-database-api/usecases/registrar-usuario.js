@@ -1,6 +1,7 @@
 //#region Imports
 
 const Usuario = require( '../models/usuario.js' );
+const usuarioRepository = require( '../repositories/usuario.repository.js' );
 // const characterRepository = require( '../repositories/character.repository.js' );
 
 //#endregion
@@ -13,7 +14,7 @@ const Usuario = require( '../models/usuario.js' );
  * @returns El nuevo usuario con su nuevo id.
  */
 const registrarUsuario = ( usuario ) => {
-
+    const usuarioCreado = usuarioRepository.create( usuario );
 }
 
 module.exports = { registrarUsuario };

@@ -1,5 +1,5 @@
 // Crea y almacena datos del usuario registrado.
-export class Usuario {
+module.exports = class Usuario {
     usuario;
     nombre;
     apellido;
