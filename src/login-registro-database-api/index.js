@@ -15,7 +15,7 @@ index.js: Archivo pricipal del api.
 
 const express = require( 'express' );
 // const { globalErrorHandler } = require( './middlewares/errors.js' );
-// const db = require( './repositories/db-connection.js' );
+const db = require( './repositories/db-connection.js' );
 require( 'dotenv' ).config();
 
 //#endregion
@@ -30,7 +30,7 @@ const api = express();
 //#region
 
 // Se conecta a la base de datos.
-// db.connect();
+db.connect();
 
 // Configuración de expressjs para que lea el body en formato json. 
 api.use( express.json() );

@@ -13,8 +13,10 @@ const usuarioRepository = require( '../repositories/usuario.repository.js' );
  * @param {Usuario} usuario Datos para tomar las modificaciones.
  * @returns El nuevo usuario con su nuevo id.
  */
-const registrarUsuario = ( usuario ) => {
-    const usuarioCreado = usuarioRepository.create( usuario );
+const registrarUsuario = async ( usuario ) => {
+    const usuarioCreado = await usuarioRepository.create( usuario );
+
+    return usuarioCreado;
 }
 
 module.exports = { registrarUsuario };

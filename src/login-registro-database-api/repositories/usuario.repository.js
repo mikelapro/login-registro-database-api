@@ -1,5 +1,8 @@
-// Repository: Controla la persistencia (lectura y escritura (insertar, actualizar y eliminar)) de datos en una base de datos.
-// Cada colección debe tener su propio repository.
+// Repository: Controla la persistencia (lectura y escritura (insertar, actualizar y eliminar)) 
+// de datos en una base de datos. Cada colección debe tener su propio repository.
+
+//* NOTA: Para que funcione este repository, hay que conectarse a la base de datos primero.
+//* Ver: db-connection.js.
 
 //#region Imports
 
@@ -24,6 +27,7 @@ const create = async ( usuario ) => {
     // Convierte a POJOS.
     // https://mongoosejs.com/docs/api/document.html#Document.prototype.toObject().
     const usuarioCreated = usuarioCreatedDoc.toObject();
+
     return usuarioCreated;
 };
 

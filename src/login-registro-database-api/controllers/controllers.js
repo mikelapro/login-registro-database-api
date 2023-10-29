@@ -21,7 +21,7 @@ const getApiInfo = asyncHandler( async ( req, res ) => {
  */
 const registrarUsuario = asyncHandler( async ( req, res ) => {
     // usecases.checkApiKey( req.query.apiKey );
-    res.status( 200 ).json( usecases.registrarUsuario( req.body ) );
+    res.status( 200 ).json( await usecases.registrarUsuario( req.body ) );
 } );
 
 module.exports = {
