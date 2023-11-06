@@ -31,8 +31,14 @@ const create = async ( usuario ) => {
     return usuarioCreated;
 };
 
+const getByUserName = async ( userName ) => {
+    const usuario = await Mongoose.findOne( { nombreUsuario:userName } ).lean().exec();
+    return usuario;
+};
+
 //#endregion
 
 module.exports = {
-    create
+    create,
+    getByUserName
 };

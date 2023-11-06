@@ -14,7 +14,7 @@ index.js: Archivo pricipal del api.
 //#region Imports
 
 const express = require( 'express' );
-// const { globalErrorHandler } = require( './middlewares/errors.js' );
+const { globalErrorHandler } = require( './middlewares/errors.js' );
 const db = require( './repositories/db-connection.js' );
 require( 'dotenv' ).config();
 
@@ -40,7 +40,7 @@ api.use( require( './routes/routes.js' ) );
 
 // Middleware - Tratamiento de errores global.
 // *NOTE: Tiene que estar luego de los endpoints/routes.
-// api.use( globalErrorHandler );
+api.use( globalErrorHandler );
 
 // Oreja escuchando en el puerto {port} los request al api.
 api.listen( port, () => {
