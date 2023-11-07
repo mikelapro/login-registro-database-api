@@ -8,9 +8,12 @@ const usuarioRepository = require( '../repositories/usuario.repository.js' );
 //#region Usecase
 
 /**
+ * Obtiene el usuario correspondiente al userName especificado.
+ * @param {String} userName El userName a buscar. 
+ * @returns El usuario correspondiente o null. 
  */
-const getUsuarioByUserName = async ( nombreUsuario ) => {
-    const usuario = await usuarioRepository.getByUserName( nombreUsuario );
+const getUsuarioByUserName = async ( userName ) => {
+    const usuario = await usuarioRepository.getByUserName( userName );
 
     return usuario;
 };

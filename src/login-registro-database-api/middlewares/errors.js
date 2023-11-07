@@ -10,7 +10,6 @@ const globalErrorHandler = ( err, req, res, next ) => {
                 message: 'Este nombre de usuario ya existe.'
             } );
             break;
-
     }
 };
 

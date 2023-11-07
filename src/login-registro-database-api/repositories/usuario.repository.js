@@ -21,6 +21,11 @@ const Mongoose = mongoose.model( dataModelName, schema, collectionName ); // Mon
 
 //#region Methods
 
+/**
+ * Crea el usuario especificado en la base de datos.
+ * @param {String} usuario El usuario a crear.
+ * @returns El usuario creado con su nuevo id correspondiente.
+ */
 const create = async ( usuario ) => {
     const usuarioCreatedDoc = await Mongoose.create( usuario );
 
@@ -31,6 +36,11 @@ const create = async ( usuario ) => {
     return usuarioCreated;
 };
 
+/**
+ * Obtiene el usuario correspondiente al userName especificado.
+ * @param {String} userName El userName a buscar. 
+ * @returns El usuario correspondiente o null. 
+ */
 const getByUserName = async ( userName ) => {
     const usuario = await Mongoose.findOne( { nombreUsuario:userName } ).lean().exec();
     return usuario;
