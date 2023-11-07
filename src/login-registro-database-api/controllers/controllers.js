@@ -27,4 +27,4 @@ const registrarUsuario = asyncHandler( async ( req, res ) => {
 module.exports = {
     getApiInfo,
     registrarUsuario
-}
+};

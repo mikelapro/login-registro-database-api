@@ -1,6 +1,5 @@
 //#region Imports
 
-const Usuario = require( '../models/usuario.js' );
 const usuarioRepository = require( '../repositories/usuario.repository.js' );
 
 //#endregion
