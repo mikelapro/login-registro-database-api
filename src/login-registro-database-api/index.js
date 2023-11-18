@@ -14,6 +14,7 @@ index.js: Archivo pricipal del api.
 //#region Imports
 
 const express = require( 'express' );
+const cors = require( 'cors' );
 const { globalErrorHandler } = require( './middlewares/errors.js' );
 const db = require( './repositories/db-connection.js' );
 require( 'dotenv' ).config();
@@ -34,6 +35,13 @@ db.connect();
 
 // Configuración de expressjs para que lea el body en formato json. 
 api.use( express.json() );
+
+// Configuración de expressjs para que permita CORS.
+// api.use( cors( {
+//     origin: '*' // Permite acceder al API desde cualquier lado.
+// } ) );
+// 	CORS = Cross-Origin Resource Sharing (Intercambio de Recursos de Origen Cruzado).
+api.use( cors() );
 
 // Importa las rutas de los endpoints.
 api.use( require( './routes/routes.js' ) );
