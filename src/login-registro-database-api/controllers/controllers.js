@@ -24,7 +24,15 @@ const registrarUsuario = asyncHandler( async ( req, res ) => {
     res.status( 200 ).json( await usecases.registrarUsuario( req.body ) );
 } );
 
+/**
+ * 
+ */
+const login = asyncHandler( async ( req, res ) => {
+    res.status( 200 ).json( await usecases.login( req.body ) );
+} );
+
 module.exports = {
     getApiInfo,
-    registrarUsuario
+    registrarUsuario,
+    login
 };

@@ -19,6 +19,9 @@ router.get( '/', controllers.getApiInfo );
 // Endpoint: POST /usuarios
 router.post( '/usuarios', controllers.registrarUsuario );
 
+// Endpoint: POST /login
+router.post( '/login', controllers.login );
+
 //#endregion
 
 module.exports = router;

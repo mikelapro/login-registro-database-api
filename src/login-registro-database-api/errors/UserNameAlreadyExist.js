@@ -7,6 +7,6 @@ module.exports = class UserNameAlreadyExist extends Error {
     // eslint-disable-next-line no-unused-vars
     constructor( message ) {
         super( 'Este nombre de usuario ya existe.' );
-        this.name = 'UserNameAlreadyExist';
+        this.errorCode = 'UserNameAlreadyExist';
     }
 };

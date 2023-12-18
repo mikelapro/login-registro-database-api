@@ -13,4 +13,4 @@ module.exports = class Usuario {
         this.contrasena = contrasena;
         this.genero = genero;
     }
-}
+};

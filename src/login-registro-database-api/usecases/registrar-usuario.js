@@ -27,7 +27,6 @@ const registrarUsuario = async ( usuario ) => {
         // Se encontró un usuario con el mismo username asi que no debemos registrarlo porque ya existe.
         throw new UserNameAlreadyExist();
     }
-
 };
 
 //#endregion
