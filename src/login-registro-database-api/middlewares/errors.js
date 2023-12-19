@@ -18,8 +18,16 @@ const globalErrorHandler = ( err, req, res, next ) => {
                 message: err.message,
                 errorCode: err.errorCode,
             } );
-            break;   
+            break;
+        
+        default:
+            res.status( 500 ).json( {
+                status: 'error',
+                message: err.message
+            } );
+            break;
     }
+
 };
 
 module.exports = {
