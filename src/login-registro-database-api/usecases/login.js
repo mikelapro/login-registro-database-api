@@ -1,5 +1,21 @@
 const InvalidCredentials = require( '../errors/InvalidCredentials.js' );
 const { getUsuarioByUserName } = require( './get-usuario-by-user-name.js' );
+const jwt = require( 'jsonwebtoken' );
+require( 'dotenv' ).config();
+
+/**
+ * Obtiene un token con el payload especificado.
+ * @param {Object} payload Objeto que se va a guardar dentro del token para luego poder leerlo.
+ * @param {String} expiresIn Tiempo de expiración expresado en string. Ej: "2 days", "10h",
+ *  "7d".
+ * @returns 
+*/
+const getToken = ( payload, expiresIn ) => {
+
+    const token = jwt.sign( payload, process.env.JWT_SECRET, { expiresIn: expiresIn } );
+
+    return token;
+};
 
 /**
  * Verifica que las credenciales especificadas sean validas, si lo son, devuelve un token 
@@ -19,7 +35,10 @@ const login = async ( credenciales ) => {
     if ( usuario == undefined || usuario == null || usuario == {} ) {
         throw new InvalidCredentials(); // Ok.
     } else if ( credenciales.nombreUsuario == usuario.nombreUsuario && credenciales.contrasena == usuario.contrasena ) {
-        return 'ljkcfgmljfcjgmjlfcngódjfgjfuidjguidfjgudfjífgjfdugjhfudgjfu';// ok.
+
+        const token = getToken( { nombreUsuario: usuario.nombreUsuario }, '10s' );
+        return token; 
+
     } else if ( credenciales.nombreUsuario == usuario.nombreUsuario && credenciales.contrasena != usuario.contrasena ) {
         throw new InvalidCredentials();// ok.
     } else {
