@@ -36,7 +36,7 @@ const login = async ( credenciales ) => {
         throw new InvalidCredentials(); // Ok.
     } else if ( credenciales.nombreUsuario == usuario.nombreUsuario && credenciales.contrasena == usuario.contrasena ) {
 
-        const token = getToken( { nombreUsuario: usuario.nombreUsuario }, '10s' );
+        const token = getToken( { nombreUsuario: usuario.nombreUsuario }, '12h' );
         return token; 
 
     } else if ( credenciales.nombreUsuario == usuario.nombreUsuario && credenciales.contrasena != usuario.contrasena ) {

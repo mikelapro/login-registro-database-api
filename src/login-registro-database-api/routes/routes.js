@@ -22,6 +22,9 @@ router.post( '/usuarios', controllers.registrarUsuario );
 // Endpoint: POST /login
 router.post( '/login', controllers.login );
 
+// Endpoint: GET / - Ej: http://localhost:3000
+router.get( '/usuarios/auth', controllers.getUsuario );
+
 //#endregion
 
 module.exports = router;
