@@ -16,10 +16,11 @@ const UserNameAlreadyExist = require( '../errors/UserNameAlreadyExist.js' );
  */
 const registrarUsuario = async ( usuario ) => { 
 
+    // Verifica si ya existe buscándolo primero en la dase de datos.
     const usuarioVerificador = await getUsuarioByUserName( usuario.nombreUsuario );
 
     if ( usuarioVerificador == null ) {
-        // No se encontro el usuario, así que pódémos registrarlo.`
+        // No se encontro el usuario, así que podémos registrarlo.`
         const usuarioCreado = await usuarioRepository.create( usuario );
 
         return usuarioCreado;
