@@ -1,6 +1,7 @@
 const InvalidCredentials = require( '../errors/InvalidCredentials.js' );
 const { getUsuarioByUserName } = require( './get-usuario-by-user-name.js' );
 const jwt = require( 'jsonwebtoken' );
+const bcrypt = require( 'bcryptjs' );
 require( 'dotenv' ).config();
 
 /**
@@ -15,6 +16,11 @@ const getToken = ( payload, expiresIn ) => {
     const token = jwt.sign( payload, process.env.JWT_SECRET, { expiresIn: expiresIn } );
 
     return token;
+};
+
+const verificarPassword = async ( password, passwordEncriptada ) => {
+    const resultado = await bcrypt.compare( password, passwordEncriptada );
+    return resultado;
 };
 
 /**
@@ -34,7 +40,8 @@ const login = async ( credenciales ) => {
     
     if ( usuario == undefined || usuario == null || usuario == {} ) {
         throw new InvalidCredentials(); // Ok.
-    } else if ( credenciales.nombreUsuario == usuario.nombreUsuario && credenciales.contrasena == usuario.contrasena ) {
+    } else if ( credenciales.nombreUsuario == usuario.nombreUsuario 
+             && await verificarPassword( credenciales.contrasena, usuario.contrasena ) ) {
 
         const token = getToken( { nombreUsuario: usuario.nombreUsuario }, '12h' );
         return token; 

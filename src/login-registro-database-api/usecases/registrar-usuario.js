@@ -3,10 +3,16 @@
 const usuarioRepository = require( '../repositories/usuario.repository.js' );
 const { getUsuarioByUserName } = require( './get-usuario-by-user-name.js' );
 const UserNameAlreadyExist = require( '../errors/UserNameAlreadyExist.js' );
+const bcrypt = require( 'bcryptjs' );
 
 //#endregion
 
 //#region Usecase
+
+const encriptarPassword = async ( password ) => {
+    const hash = await bcrypt.hash( password, 1 );
+    return hash;
+};
 
 /**
  * Registra el usuario especificado como nuevo usuario. 
@@ -20,6 +26,9 @@ const registrarUsuario = async ( usuario ) => {
     const usuarioVerificador = await getUsuarioByUserName( usuario.nombreUsuario );
 
     if ( usuarioVerificador == null ) {
+        let passwordEncriptada = await encriptarPassword( usuario.contrasena );
+        usuario.contrasena = passwordEncriptada;
+        
         // No se encontro el usuario, así que podémos registrarlo.`
         const usuarioCreado = await usuarioRepository.create( usuario );
 
