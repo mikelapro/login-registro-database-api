@@ -18,5 +18,5 @@ Funciona en conjunto con el repo [login-registro-database](https://github.com/mi
 * Mongoose (para conectarnos a MongoDB).
 * ESLint.
 
-> [!NOTA]
+> [!NOTE]
 > Requiere una base de datos MongoDB y configurar su connection string en un archivo .env (ver ejemplo en [.env-example](https://github.com/mikelapro/login-registro-database-api/blob/main/.env-example)).
